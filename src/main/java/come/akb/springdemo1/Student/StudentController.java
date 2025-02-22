@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,8 +12,12 @@ import java.util.List;
 @RequestMapping("/api/v1/students")
 public class StudentController {
 
+    StudentService studentService;
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
+    }
     @GetMapping
-    public List<String>StudentController() {
-        return List.of("A", "B", "C", "D", "E", "F", "G", "H");
+    public List<Student>StudentController() {
+       return studentService.StudentController();
     }
 }
